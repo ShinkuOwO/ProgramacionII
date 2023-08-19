@@ -4,27 +4,64 @@ using UnityEngine;
 
 public class JhonController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    private bool isGrounded;
-    private Rigidbody2D rb;
+    [Range(1, 10)] public float velocidad;
+    [Range(-10, 10)] public float raycast;
+    public float FuerzaSalto;
+    private float Horizontal;
+    private bool Suelo;
+
+    Rigidbody2D rb2d;
+    Animator animacion;
+    SpriteRenderer sr;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
+        animacion = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-        float horizontalInput = Input.GetAxis("Horizontal");
-        Vector2 moveDirection = new Vector2(horizontalInput, 0);
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-        
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        Horizontal = Input.GetAxisRaw("Horizontal"); // -1,0,1 
+
+        animacion.SetBool("corriendo", Horizontal != 0.0f);
+
+        if (Horizontal > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            sr.flipX = false;
         }
+        else if (Horizontal < 0)
+        {
+            sr.flipX = true;
+        }
+
+        Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green);
+
+        //estoy tocando el suelo?
+        if (Physics2D.Raycast(transform.position, Vector2.down, raycast))
+        {
+            Suelo = true;
+        }
+        else
+        {
+            Suelo = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && Suelo)
+        {
+            Salto();
+        }
+    }
+    private void Salto()
+    {
+        rb2d.AddForce(Vector2.up * FuerzaSalto);
+    }
+    private void FixedUpdate()
+    {
+        rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
+
     }
 }
