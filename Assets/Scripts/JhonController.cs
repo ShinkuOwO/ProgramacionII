@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,9 +39,9 @@ public class JhonController : MonoBehaviour
             sr.flipX = true;
         }
 
-        Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green);
-
-        //estoy tocando el suelo?
+        //Esta línea de código está dibujando un raycast desde la posición del personaje hacia abajo para verificar si el personaje está en el suelo. 
+        Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green); 
+        //Esta sección de código está verificando si el personaje está en el suelo. Esto se hace mediante un raycast que se dibuja desde la posición del personaje hacia abajo. Si el raycast colisiona con algo, entonces el personaje está en el suelo. Esto se guarda en la variable booleana "Suelo".
         if (Physics2D.Raycast(transform.position, Vector2.down, raycast))
         {
             Suelo = true;
@@ -55,6 +56,9 @@ public class JhonController : MonoBehaviour
             Salto();
         }
     }
+    
+    //El método Salto() se encarga de aplicar una fuerza hacia arriba al Rigidbody2D del objeto, para que este realice un salto. 
+    //Recibe como parámetro una fuerza de salto, la cual se asigna en el Inspector de Unity.
     private void Salto()
     {
         rb2d.AddForce(Vector2.up * FuerzaSalto);
@@ -65,3 +69,4 @@ public class JhonController : MonoBehaviour
 
     }
 }
+
