@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 public class JhonController : MonoBehaviour
 {
+    public GameObject Bala;
     [Range(1, 10)] public float velocidad;
     [Range(-10, 10)] public float raycast;
     public float FuerzaSalto;
     private float Horizontal;
     private bool Suelo;
 
+    
     Rigidbody2D rb2d;
     Animator animacion;
     SpriteRenderer sr;
@@ -64,6 +66,11 @@ public class JhonController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
 
+    }
+    private void Disparo()
+
+    {
+        GameObject instanciarBala = Instantiate(Bala,transform.position,Quaternion.identity);
     }
 }
 
