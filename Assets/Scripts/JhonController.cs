@@ -31,16 +31,8 @@ public class JhonController : MonoBehaviour
 
         animacion.SetBool("corriendo", Horizontal != 0.0f);
 
-        if (Horizontal > 0)
-        {
-            sr.flipX = false;
-        }
-        else if (Horizontal < 0)
-        {
-            sr.flipX = true;
-        }
+        johnVolteado(Horizontal);
 
-        
         Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green); 
         
         if (Physics2D.Raycast(transform.position, Vector2.down, raycast))
@@ -87,5 +79,18 @@ public class JhonController : MonoBehaviour
         GameObject Bala = Instantiate(balaPrefab,transform.position + flipbala * 0.1f ,Quaternion.identity);
         Bala.GetComponent<balaBehaviur>().setDirection(flipbala);
     }
+    
+    public void johnVolteado(float horizontal) 
+    {
+        if (horizontal > 0)
+        {
+            sr.flipX = false;
+        }
+        else if (horizontal < 0)
+        {
+            sr.flipX = true;
+        }
+    }
+
 }
 
