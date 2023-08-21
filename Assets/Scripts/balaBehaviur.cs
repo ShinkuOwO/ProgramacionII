@@ -7,6 +7,7 @@ public class balaBehaviur : MonoBehaviour
     public float velocidad;
 
     private Rigidbody2D rb2d;
+    private Vector2 Direccion;
 
     void Start()
     {
@@ -20,6 +21,11 @@ public class balaBehaviur : MonoBehaviour
     
     private void FixedUpdate()
     {
-        rb2d.velocity = Vector2.right * velocidad;
+        rb2d.velocity = Direccion * velocidad;
+    }
+
+    public void setDirection(Vector2 direction)
+    {
+        Direccion = direction;
     }
 }

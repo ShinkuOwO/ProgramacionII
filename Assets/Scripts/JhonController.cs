@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class JhonController : MonoBehaviour
 {
-    public GameObject Bala;
+    public GameObject balaPrefab;
     [Range(1, 10)] public float velocidad;
     [Range(-10, 10)] public float raycast;
     public float FuerzaSalto;
     private float Horizontal;
     private bool Suelo;
+    private Vector3 flipbala;
 
-    
     Rigidbody2D rb2d;
     Animator animacion;
     SpriteRenderer sr;
@@ -56,6 +56,11 @@ public class JhonController : MonoBehaviour
         {
             Salto();
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Disparo(Horizontal);
+        }
     }
     
     private void Salto()
@@ -67,10 +72,20 @@ public class JhonController : MonoBehaviour
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
 
     }
-    private void Disparo()
+    private void Disparo(float johnflip)
 
     {
-        GameObject instanciarBala = Instantiate(Bala,transform.position,Quaternion.identity);
+        if (johnflip > 0) 
+        {
+            flipbala = Vector2.right;
+        }
+        else if (johnflip < 0)
+        {
+            flipbala = Vector2.left;
+        }
+
+        GameObject Bala = Instantiate(balaPrefab,transform.position + flipbala * 0.1f ,Quaternion.identity);
+        Bala.GetComponent<balaBehaviur>().setDirection(flipbala);
     }
 }
 
