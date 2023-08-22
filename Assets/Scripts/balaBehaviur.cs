@@ -14,20 +14,12 @@ public class balaBehaviur : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();    
     }
-
-    void Update()
-    {
-       
-
-    }
-    
     private void FixedUpdate()
     {
         rb2d.velocity = Direccion * velocidad;
     }
-
-    public void setDirection(Vector2 direction)
+    public void darDireccion(Vector2 direccion)
     {
-        Direccion = direction;
+        Direccion = direccion;
     }
 }
