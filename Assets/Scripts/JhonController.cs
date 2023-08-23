@@ -27,7 +27,11 @@ public class JhonController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green);       
         if (Physics2D.Raycast(transform.position, Vector2.down, raycast)){Suelo = true;}
         else{Suelo = false;}
-        if (Input.GetKeyDown(KeyCode.X) && Suelo){Salto();} 
+        if (Input.GetKeyDown(KeyCode.X) && Suelo){Salto();}
+        if (!Input.anyKey){animacion.SetBool("corriendo", false);}
+        bool saltando = animacion.GetBool("saltando");
+        if (Suelo == false && saltando == false) { animacion.SetBool("saltando", true);}
+        else { animacion.SetBool("saltando", false);}
     }  
     private void Salto()
     {
@@ -37,5 +41,6 @@ public class JhonController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
     }    
+    
 }
 
