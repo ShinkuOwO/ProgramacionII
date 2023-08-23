@@ -8,14 +8,19 @@ public class JhonController : MonoBehaviour
     [Range(-10, 10)] public float raycast;
     public float FuerzaSalto;
     private float Horizontal;
-    private float ultimoCambioAudio;
     private bool Suelo;
+    private bool estaCaminando = false;
     Rigidbody2D rb2d;
     Animator animacion;
     public SpriteRenderer sr;
     public AudioClip jumpSound;
-    public AudioClip caminar1;
-    public AudioClip caminar2;
+    public AudioClip[] PasosSound;
+
+    private float intervaloEntrePasos = 0.3f;
+    private float longitudPaso = 0.5f;
+    private float tiempoUltimoPaso;
+    private Vector3 ultimoPaso;
+
 
     private AudioSource caminarAudioSource;
     void Start()
@@ -24,6 +29,9 @@ public class JhonController : MonoBehaviour
         animacion = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         caminarAudioSource = GetComponents<AudioSource>()[1];
+        caminarAudioSource.loop = false;
+        caminarAudioSource.playOnAwake = false;
+        ultimoPaso = transform.position;
     }
     void Update()
     {
@@ -39,16 +47,15 @@ public class JhonController : MonoBehaviour
         bool saltando = animacion.GetBool("saltando");       
         if (Suelo == false && saltando == false) { animacion.SetBool("saltando", true);}
         else { animacion.SetBool("saltando", false);}
-        bool caminando = animacion.GetBool("corriendo");
-        if (caminando)
+        if (Vector3.Distance(transform.position, ultimoPaso) >= longitudPaso)
         {
-            if (Time.time - ultimoCambioAudio >= 0.5f)
-            {
-                caminarAudioSource.clip = Random.Range(0, 2 + 1) == 0 ? caminar1 : caminar2;
-                caminarAudioSource.Play();
-                ultimoCambioAudio = Time.time;}
+            if (Time.time > tiempoUltimoPaso) {
+                ReproducirSonidoDePaso();
+                ultimoPaso = transform.position;
+                tiempoUltimoPaso = Time.time + intervaloEntrePasos;
             }
-        else{caminarAudioSource.Stop();}
+        }
+
     }  
     private void Salto()
     {
@@ -58,6 +65,26 @@ public class JhonController : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
-    }   
+    }
+    private void ReproducirSonidoDePaso()
+    {
+        if (seMueveEnSuelo())
+        {
+            caminarAudioSource.clip = PasosSound[Random.Range(0, PasosSound.Length)];
+            caminarAudioSource.Play();
+        }
+            
+    }
+
+    private bool seMueveEnSuelo()
+    {
+        if (Physics2D.Raycast(transform.position, Vector2.down, raycast)) {
+            if (Mathf.Abs(Horizontal) > 0.0f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
