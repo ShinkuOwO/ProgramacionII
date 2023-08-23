@@ -16,8 +16,7 @@ public class puntobala : MonoBehaviour
         JhonController johnController = JhonController.GetComponent<JhonController>();
         bool estaVolteado = johnController.sr.flipX;
         if (Input.GetKey(KeyCode.Z))
-        {
-            //Disparar();
+        {           
             Disparo(estaVolteado);
         }
 
@@ -28,14 +27,7 @@ public class puntobala : MonoBehaviour
         else if (estaVolteado == true) { direccion = Vector2.left; }
         GameObject Bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
         Bala.GetComponent<balaBehaviur>().darDireccion(direccion);
-        Destroy(Bala,2f);
+        //Destroy(Bala,2f);
     }
-    
-    //public void Disparar()
-    //{
-    //    //Aqui creamos la bala
-    //    Vector2 direccion = new Vector2(0, 1);
-    //    GameObject Bala =Instantiate(balaPrefab, transform.position, Quaternion.identity);
-    //    Bala.GetComponent<balaBehaviur>().darDireccion(direccion);
-    //}
+   
 }
