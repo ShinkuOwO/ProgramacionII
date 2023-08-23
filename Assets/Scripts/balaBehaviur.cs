@@ -22,4 +22,9 @@ public class balaBehaviur : MonoBehaviour
     {
         Direccion = direccion;
     }
+    private void OnBecameInvisible()
+    {
+        // El objeto se ha vuelto invisible para la cámara, así que destrúyelo
+        Destroy(gameObject);
+    }
 }

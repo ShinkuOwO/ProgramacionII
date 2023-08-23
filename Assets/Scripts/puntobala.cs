@@ -16,17 +16,18 @@ public class puntobala : MonoBehaviour
         JhonController johnController = JhonController.GetComponent<JhonController>();
         bool estaVolteado = johnController.sr.flipX;
         if (Input.GetKey(KeyCode.Z))
-        {
+        {           
             Disparo(estaVolteado);
         }
 
     }
     private void Disparo(bool estaVolteado)
-    {    
-        if (estaVolteado == false) { direccion = Vector2.right;}
-        else if (estaVolteado == true) {direccion = Vector2.left;}
+    {
+        if (estaVolteado == false) { direccion = Vector2.right; }
+        else if (estaVolteado == true) { direccion = Vector2.left; }
         GameObject Bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
         Bala.GetComponent<balaBehaviur>().darDireccion(direccion);
-        Destroy(Bala,2f);
+        //Destroy(Bala,2f);
     }
+   
 }
