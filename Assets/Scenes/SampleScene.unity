@@ -1365,8 +1365,9 @@ MonoBehaviour:
   FuerzaSalto: 1200
   sr: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: a85f465c62e855f4f9c4c76f4ed7b764, type: 3}
-  caminar1: {fileID: 8300000, guid: 616d6b5eba0d1ce4ba77a00faddbe7d3, type: 3}
-  caminar2: {fileID: 8300000, guid: b54128bba00cd4d43adf795d28f96893, type: 3}
+  PasosSound:
+  - {fileID: 8300000, guid: 616d6b5eba0d1ce4ba77a00faddbe7d3, type: 3}
+  - {fileID: 8300000, guid: b54128bba00cd4d43adf795d28f96893, type: 3}
 --- !u!82 &1243332630
 AudioSource:
   m_ObjectHideFlags: 0
