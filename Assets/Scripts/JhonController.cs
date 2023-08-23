@@ -12,6 +12,7 @@ public class JhonController : MonoBehaviour
     Rigidbody2D rb2d;
     Animator animacion;
     public SpriteRenderer sr;
+    public AudioClip jumpSound;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,6 +33,7 @@ public class JhonController : MonoBehaviour
     private void Salto()
     {
         rb2d.AddForce(Vector2.up * FuerzaSalto);
+        GetComponent<AudioSource>().PlayOneShot(jumpSound);
     }
     private void FixedUpdate()
     {
