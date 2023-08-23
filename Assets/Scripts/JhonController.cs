@@ -13,11 +13,17 @@ public class JhonController : MonoBehaviour
     Animator animacion;
     public SpriteRenderer sr;
     public AudioClip jumpSound;
+    public AudioClip caminar1;
+    public AudioClip caminar2;
+    private bool isCaminando = false;
+
+    private AudioSource caminarAudioSource;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animacion = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        caminarAudioSource = GetComponents<AudioSource>()[1];
     }
     void Update()
     {
@@ -42,6 +48,18 @@ public class JhonController : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
+
+        if (Horizontal != 0 && !isCaminando)
+        {
+            isCaminando = true;
+            caminarAudioSource.clip = Random.Range(0, 2 + 1) == 0 ? caminar1 : caminar2;
+            caminarAudioSource.Play();
+        }
+        else
+        {
+            isCaminando= false;
+            caminarAudioSource.Stop();
+        }
     }    
     
 }
