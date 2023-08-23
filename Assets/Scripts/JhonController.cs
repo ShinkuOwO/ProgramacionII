@@ -8,6 +8,7 @@ public class JhonController : MonoBehaviour
     [Range(-10, 10)] public float raycast;
     public float FuerzaSalto;
     private float Horizontal;
+    private float ultimoCambioAudio;
     private bool Suelo;
     Rigidbody2D rb2d;
     Animator animacion;
@@ -15,7 +16,6 @@ public class JhonController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip caminar1;
     public AudioClip caminar2;
-    private bool isCaminando = false;
 
     private AudioSource caminarAudioSource;
     void Start()
@@ -36,9 +36,19 @@ public class JhonController : MonoBehaviour
         else{Suelo = false;}
         if (Input.GetKeyDown(KeyCode.X) && Suelo){Salto();}
         if (!Input.anyKey){animacion.SetBool("corriendo", false);}
-        bool saltando = animacion.GetBool("saltando");
+        bool saltando = animacion.GetBool("saltando");       
         if (Suelo == false && saltando == false) { animacion.SetBool("saltando", true);}
         else { animacion.SetBool("saltando", false);}
+        bool caminando = animacion.GetBool("corriendo");
+        if (caminando)
+        {
+            if (Time.time - ultimoCambioAudio >= 0.5f)
+            {
+                caminarAudioSource.clip = Random.Range(0, 2 + 1) == 0 ? caminar1 : caminar2;
+                caminarAudioSource.Play();
+                ultimoCambioAudio = Time.time;}
+            }
+        else{caminarAudioSource.Stop();}
     }  
     private void Salto()
     {
@@ -48,19 +58,6 @@ public class JhonController : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
-
-        if (Horizontal != 0 && !isCaminando)
-        {
-            isCaminando = true;
-            caminarAudioSource.clip = Random.Range(0, 2 + 1) == 0 ? caminar1 : caminar2;
-            caminarAudioSource.Play();
-        }
-        else
-        {
-            isCaminando= false;
-            caminarAudioSource.Stop();
-        }
-    }    
-    
+    }   
 }
 
