@@ -28,6 +28,7 @@ public class puntobala : MonoBehaviour
         else if (estaVolteado == true) { direccion = Vector2.left; }
         GameObject Bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
         Bala.GetComponent<balaBehaviur>().darDireccion(direccion);
+        Destroy(Bala,2f);
     }
     
     //public void Disparar()
