@@ -638,9 +638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balaPrefab: {fileID: 6118456335010206023, guid: 131f3370548697c49821df37dd2c94bd, type: 3}
-  puntoDisparo: {fileID: 0}
+  puntoDisparo: {fileID: 655646557}
   intervaloDisparo: 0
-  JhonController: {fileID: 1243332623}
 --- !u!212 &655646559
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1190,11 +1189,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 7
-  raycast: 1
+  distanciaRayo: 1
   FuerzaSalto: 1200
   volteado: 0
-  jumpSound: {fileID: 8300000, guid: a85f465c62e855f4f9c4c76f4ed7b764, type: 3}
-  PasosSound:
+  sonidoSalto: {fileID: 8300000, guid: 1b12f7b399a75ef41b882d2e8464cef2, type: 3}
+  sonidosPasos:
   - {fileID: 8300000, guid: 616d6b5eba0d1ce4ba77a00faddbe7d3, type: 3}
   - {fileID: 8300000, guid: b54128bba00cd4d43adf795d28f96893, type: 3}
   EjeZCamara: -10
