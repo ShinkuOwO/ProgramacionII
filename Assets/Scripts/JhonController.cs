@@ -24,15 +24,18 @@ public class JhonController : MonoBehaviour
     [Header("Sonidos")]
     public AudioClip jumpSound;
     public AudioClip[] PasosSound;
-    private float tiempoUltimoPaso, intervaloEntrePasos = 0.3f, longitudPaso = 0.5f;
+    private float tiempoUltimoPaso;
+    private float intervaloEntrePasos = 0.3f;
+    private float longitudPaso = 0.5f;
     private Vector3 ultimoPaso;
+    private int pasosSoundLength;
 
-    private float Horizontal;
-
+    [Header("Cámara Jugador")]
     private Vector3 puntoInicio;
     private Camera mainCamera;
+    public float EjeZCamara;
 
-    private int pasosSoundLength;
+    private float Horizontal;
 
     void Start()
     {
@@ -48,7 +51,6 @@ public class JhonController : MonoBehaviour
 
         pasosSoundLength = PasosSound.Length;
     }
-
     void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");
@@ -85,19 +87,17 @@ public class JhonController : MonoBehaviour
         {
             VolverAlPuntoDeInicio();
         }
+        mainCamera.transform.position = transform.position + new Vector3(0,0,EjeZCamara);
     }
-
     private void Salto()
     {
         rb2d.AddForce(Vector2.up * FuerzaSalto);
         GetComponent<AudioSource>().PlayOneShot(jumpSound);
     }
-
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Horizontal * velocidad, rb2d.velocity.y);
     }
-
     private void ReproducirSonidoDePaso()
     {
         if (seMueveEnSuelo())
@@ -106,7 +106,6 @@ public class JhonController : MonoBehaviour
             caminarAudioSource.Play();
         }
     }
-
     private bool seMueveEnSuelo()
     {
         if (Physics2D.Raycast(transform.position, Vector2.down, raycast))
@@ -118,7 +117,6 @@ public class JhonController : MonoBehaviour
         }
         return false;
     }
-
     public void invertirJohn(float a, float b, float c)
     {
         transform.localScale = new Vector3(a, b, c);
@@ -130,9 +128,8 @@ public class JhonController : MonoBehaviour
         return (posicionEnpantalla.x >= 0 && posicionEnpantalla.x <= 1 &&
                 posicionEnpantalla.y >= 0 && posicionEnpantalla.y <= 1);
     }
-
     void VolverAlPuntoDeInicio()
     {
         transform.position = puntoInicio;
-    }
+    } 
 }
