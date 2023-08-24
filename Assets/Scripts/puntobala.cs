@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class puntobala : MonoBehaviour
@@ -13,13 +12,16 @@ public class puntobala : MonoBehaviour
     public float intervaloDisparo;
     private bool puedeDisparar = true;
 
-    [Header("Controlador de Personaje")]
-    public GameObject JhonController;
+    private ControladorJuan cj;
 
-    void Update()
+    private void Start()
     {
-        JhonController johnController = JhonController.GetComponent<JhonController>();
-        bool estaVolteado = johnController.volteado;
+        cj = FindObjectOfType<ControladorJuan>();
+    }
+
+    private void Update()
+    {
+        bool estaVolteado = cj.GetVolteado();
 
         if (puedeDisparar && Input.GetKeyDown(KeyCode.C))
         {
@@ -40,16 +42,9 @@ public class puntobala : MonoBehaviour
 
     private void Disparo(bool estaVolteado)
     {
-        if (estaVolteado == false)
-        {
-            direccion = Vector2.right;
-        }
-        else if (estaVolteado == true)
-        {
-            direccion = Vector2.left;
-        }
+        direccion = estaVolteado ? Vector2.left : Vector2.right;
 
-        GameObject Bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
+        GameObject Bala = Instantiate(balaPrefab, puntoDisparo.position, Quaternion.identity);
         Bala.GetComponent<balaBehaviur>().darDireccion(direccion);
     }
 }
