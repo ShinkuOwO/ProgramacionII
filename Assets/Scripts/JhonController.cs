@@ -3,25 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class JhonController : MonoBehaviour
-{   
+{
     [Range(1, 10)] public float velocidad;
     [Range(-10, 10)] public float raycast;
-    public float FuerzaSalto;
-    private float Horizontal;
-    private bool Suelo;
-    private bool estaCaminando = false;
+    public float FuerzaSalto,Horizontal;
+    public bool volteado;
     Rigidbody2D rb2d;
     Animator animacion;
-    public SpriteRenderer sr;
+    SpriteRenderer sr;
     public AudioClip jumpSound;
     public AudioClip[] PasosSound;
 
-    private float intervaloEntrePasos = 0.3f;
-    private float longitudPaso = 0.5f;
-    private float tiempoUltimoPaso;
+    private bool Suelo,estaCaminando = false;
+    private float tiempoUltimoPaso,intervaloEntrePasos = 0.3f,longitudPaso = 0.5f;
     private Vector3 ultimoPaso;
-
-
     private AudioSource caminarAudioSource;
     void Start()
     {
@@ -37,8 +32,8 @@ public class JhonController : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal"); // -1,0,1 
         animacion.SetBool("corriendo", Horizontal != 0.0f);
-        if (Horizontal > 0){sr.flipX = false;}
-        else if (Horizontal < 0){sr.flipX = true;}
+        if (Horizontal > 0){invertirJohn(1.0f, 1.0f, 1.0f); volteado = false;}
+        else if (Horizontal < 0){invertirJohn(-1.0f,1.0f,1.0f); volteado = true;}
         Debug.DrawRay(transform.position, Vector2.down * raycast, Color.green);       
         if (Physics2D.Raycast(transform.position, Vector2.down, raycast)){Suelo = true;}
         else{Suelo = false;}
@@ -85,6 +80,10 @@ public class JhonController : MonoBehaviour
             }
         }
         return false;
+    }
+    public void invertirJohn(float a,float b, float c)
+    {
+        transform.localScale = new Vector3(a, b, c);       
     }
 }
 
