@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.69}
+  m_LocalPosition: {x: -4.8, y: 16.8, z: -9.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -717,7 +717,7 @@ Transform:
   m_GameObject: {fileID: 719231776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.95, y: 1.3, z: 0}
+  m_LocalPosition: {x: 3.66, y: 0.77, z: 0}
   m_LocalScale: {x: 6.5200005, y: 6.5200005, z: 6.5200005}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -970,37 +970,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 413500322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1147604999
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1147605000}
-  m_Layer: 0
-  m_Name: puntoCamara
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1147605000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147604999}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.149, y: 0.166, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1243332625}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243332623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1058,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1147605000}
   - {fileID: 655646557}
   m_Father: {fileID: 719231777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1196,7 +1164,7 @@ MonoBehaviour:
   sonidosPasos:
   - {fileID: 8300000, guid: 616d6b5eba0d1ce4ba77a00faddbe7d3, type: 3}
   - {fileID: 8300000, guid: b54128bba00cd4d43adf795d28f96893, type: 3}
-  EjeZCamara: -10
+  EjeZCamara: 10
 --- !u!82 &1243332630
 AudioSource:
   m_ObjectHideFlags: 0
