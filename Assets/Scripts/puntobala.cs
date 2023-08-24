@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class puntobala : MonoBehaviour
 {
+    [Header("Bala")]
     public GameObject balaPrefab;
     public Transform puntoDisparo;
-    public float intervaloDisparo;
-    public GameObject JhonController;
-
     private Vector2 direccion;
+
+    [Header("Intervalo de Disparo")]
+    public float intervaloDisparo;
     private bool puedeDisparar = true;
+
+    [Header("Controlador de Personaje")]
+    public GameObject JhonController;
 
     void Update()
     {
