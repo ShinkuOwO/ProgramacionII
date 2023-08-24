@@ -61,6 +61,10 @@ public class ControladorJuan : MonoBehaviour
         ManejarSonidos();
         ManejarCamara();
     }
+    private void FixedUpdate()
+    {
+        ManejarCamara();
+    }
 
     private void ManejarEntrada()
     {
@@ -148,7 +152,10 @@ public class ControladorJuan : MonoBehaviour
         {
             VolverAlPuntoDeInicio();
         }
-        camaraPrincipal.transform.position = transform.position + new Vector3(0, 0, EjeZCamara);
+   
+        Vector3 dondeEstoy = camaraPrincipal.transform.position;
+        Vector3 dondeQuieroIr = transform.position - new Vector3(0, 0, EjeZCamara);
+        camaraPrincipal.transform.position = Vector3.Lerp(dondeEstoy,dondeQuieroIr, .05f);
     }
 
     private bool EstaDentroDeLaCamara()
