@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class balaBehaviur : MonoBehaviour
@@ -8,28 +6,25 @@ public class balaBehaviur : MonoBehaviour
     public float velocidad;
 
     private Rigidbody2D rb2d;
-    private Vector2 Direccion;
-    private SpriteRenderer sr;
+    private Vector2 direccion;
 
-    void Start()
+    private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
-        rb2d.velocity = Direccion * velocidad;
+        rb2d.velocity = direccion * velocidad;
     }
 
-    public void darDireccion(Vector2 direccion)
+    public void darDireccion(Vector2 nuevaDireccion)
     {
-        Direccion = direccion;
+        direccion = nuevaDireccion;
     }
 
     private void OnBecameInvisible()
-    {     
+    {
         Destroy(gameObject);
     }
 }
-
