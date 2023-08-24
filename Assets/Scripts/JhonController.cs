@@ -29,6 +29,9 @@ public class JhonController : MonoBehaviour
 
     private float Horizontal;
 
+    private Vector3 puntoInicio;
+    private Camera mainCamera;
+
     private int pasosSoundLength;
 
     void Start()
@@ -40,6 +43,8 @@ public class JhonController : MonoBehaviour
         caminarAudioSource.loop = false;
         caminarAudioSource.playOnAwake = false;
         ultimoPaso = transform.position;
+
+        mainCamera = Camera.main;
 
         pasosSoundLength = PasosSound.Length;
     }
@@ -75,6 +80,10 @@ public class JhonController : MonoBehaviour
                     tiempoUltimoPaso = Time.time + intervaloEntrePasos;
                 }
             }
+        }
+        if (!EstaDentroDeLaCamara())
+        {
+            VolverAlPuntoDeInicio();
         }
     }
 
@@ -113,5 +122,17 @@ public class JhonController : MonoBehaviour
     public void invertirJohn(float a, float b, float c)
     {
         transform.localScale = new Vector3(a, b, c);
+    }
+    bool EstaDentroDeLaCamara()
+    {
+        Vector3 posicionEnpantalla = mainCamera.WorldToViewportPoint(transform.position);
+
+        return (posicionEnpantalla.x >= 0 && posicionEnpantalla.x <= 1 &&
+                posicionEnpantalla.y >= 0 && posicionEnpantalla.y <= 1);
+    }
+
+    void VolverAlPuntoDeInicio()
+    {
+        transform.position = puntoInicio;
     }
 }

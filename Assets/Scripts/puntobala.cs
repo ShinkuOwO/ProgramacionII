@@ -21,7 +21,7 @@ public class puntobala : MonoBehaviour
         JhonController johnController = JhonController.GetComponent<JhonController>();
         bool estaVolteado = johnController.volteado;
 
-        if (puedeDisparar && Input.GetKeyDown(KeyCode.Z))
+        if (puedeDisparar && Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(DispararConIntervalo(estaVolteado));
         }
