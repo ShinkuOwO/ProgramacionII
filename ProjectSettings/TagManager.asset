@@ -41,9 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: plataformas
+    uniqueID: 3573554537
+    locked: 0
+  - name: objetos
+    uniqueID: 205619549
+    locked: 0
   - name: adornos
     uniqueID: 1824429053
     locked: 0
-  - name: plataformas
-    uniqueID: 3573554537
+  - name: adornos fondo
+    uniqueID: 1816540129
     locked: 0
