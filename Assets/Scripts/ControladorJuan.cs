@@ -54,8 +54,7 @@ public class ControladorJuan : MonoBehaviour
 
     private void Update()
     {
-        ManejarEntrada();
-        ManejarMovimiento();
+        ManejarEntrada();     
         ManejarSalto();
         ManejarAnimacion();
         ManejarSonidos();
@@ -63,6 +62,7 @@ public class ControladorJuan : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        ManejarMovimiento();
         ManejarCamara();
     }
 
