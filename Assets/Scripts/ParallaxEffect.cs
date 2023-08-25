@@ -13,7 +13,7 @@ public class ParallaxEffect : MonoBehaviour
     }
     void LateUpdate()
     {
-        float deltaX = (cameraTransform.position.x - anteriorPosicionCamara.x) * 0.5f;
+        float deltaX = (cameraTransform.position.x - anteriorPosicionCamara.x) * -0.5f;
         transform.Translate(new Vector3(deltaX, 0, 0));
         anteriorPosicionCamara = cameraTransform.position;
     }
