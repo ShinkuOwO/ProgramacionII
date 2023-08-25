@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Plataformas
   - Water
   - UI
-  - 
+  - Adornos
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: adornos
+    uniqueID: 1824429053
+    locked: 0
+  - name: plataformas
+    uniqueID: 3573554537
     locked: 0
