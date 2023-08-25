@@ -9,6 +9,7 @@ public class ParallaxEffect : MonoBehaviour
     void Start()
     {
         cameraTransform = Camera.main.transform;
+        anteriorPosicionCamara = cameraTransform.position;
     }
     void LateUpdate()
     {
