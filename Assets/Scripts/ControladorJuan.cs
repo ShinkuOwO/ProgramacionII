@@ -58,8 +58,8 @@ public class ControladorJuan : MonoBehaviour
         ManejarSalto();
         ManejarAnimacion();
         ManejarSonidos();
-        ManejarCamara();
     }
+
     private void FixedUpdate()
     {
         ManejarMovimiento();
