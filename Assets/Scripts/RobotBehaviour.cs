@@ -2,30 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class RobotBehaviour : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Manzanita;
     private float ultimoDisparo;
     public float delayDisparo;
+    int vida = 100;
+    private enemyShoot eS;
 
     [Header("Volteado")]
     public bool volteado;
-
-    // Update is called once per frame
+    private void Start()
+    {
+        eS = FindObjectOfType<enemyShoot>();
+    }
     void Update()
     {
+        
         MirarAlPlayer();
         DisparoEnemigo();
     }
     private void DisparoEnemigo()
     {
         float distancia = Mathf.Abs(Player.transform.position.x - transform.position.x);
-        if(distancia > 1.0f && Time.time > ultimoDisparo + delayDisparo) 
+        if (distancia < 10.0f && Time.time > ultimoDisparo + delayDisparo)
         {
-            Debug.Log("Enemigo Disparando"); 
-
-            ultimoDisparo = Time.time;
+            if (eS != null) // Verifica que la referencia sea válida
+            {
+                StartCoroutine(eS.DispararConIntervalo(volteado));
+                ultimoDisparo = Time.time;
+            }
         }
     }
     private void MirarAlPlayer()
@@ -37,5 +46,17 @@ public class RobotBehaviour : MonoBehaviour
     public bool GetVolteado()
     {
         return volteado;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bala"))
+        {
+            vida -= 10;
+            if (vida <= 0)
+            {
+                Destroy(gameObject);
+                Instantiate(Manzanita, transform.position, quaternion.identity);
+            }
+        }
     }
 }

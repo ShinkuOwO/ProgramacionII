@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class ControladorJuan : MonoBehaviour
 {
+    private int vida = 200;
     [Header("Movimiento")]
     [Range(1, 10)] public float velocidad;
     [Range(-10, 10)] public float distanciaRayo;
@@ -174,5 +176,22 @@ public class ControladorJuan : MonoBehaviour
     public bool GetVolteado()
     {
         return volteado;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Manzana"))
+        {
+            if (vida < 200)
+            {
+                vida += 20;
+                Destroy(collision.gameObject);
+
+            }
+            else if(vida >= 200)
+            {
+                vida = 200;
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }

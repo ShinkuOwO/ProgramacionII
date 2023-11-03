@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Suelo
   - Enemigo
+  - Bala
+  - Manzana
   layers:
   - Default
   - TransparentFX
