@@ -14,7 +14,7 @@ public class RobotBehaviour : MonoBehaviour
     private enemyShoot eS;
 
     [Header("Volteado")]
-    public bool volteado;
+    private bool volteado;
     private void Start()
     {
         eS = FindObjectOfType<enemyShoot>();

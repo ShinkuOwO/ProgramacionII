@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_0
+      name: start_0
       rect:
         serializedVersion: 2
         x: 0
@@ -144,7 +144,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +157,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_1
+      name: start_1
       rect:
         serializedVersion: 2
         x: 201
@@ -165,7 +165,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_2
+      name: start_2
       rect:
         serializedVersion: 2
         x: 402
@@ -186,7 +186,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +199,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_3
+      name: start_3
       rect:
         serializedVersion: 2
         x: 603
@@ -207,7 +207,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_4
+      name: start_4
       rect:
         serializedVersion: 2
         x: 804
@@ -228,7 +228,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: main_title_press_start(201x23)_5
+      name: start_5
       rect:
         serializedVersion: 2
         x: 1005
@@ -249,7 +249,7 @@ TextureImporter:
         width: 201
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -272,12 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      main_title_press_start(201x23)_0: -1890333568
-      main_title_press_start(201x23)_1: -557135422
-      main_title_press_start(201x23)_2: -976916065
-      main_title_press_start(201x23)_3: -2006363533
-      main_title_press_start(201x23)_4: 1362881426
-      main_title_press_start(201x23)_5: -882872659
+      start_0: -1890333568
+      start_1: -557135422
+      start_2: -976916065
+      start_3: -2006363533
+      start_4: 1362881426
+      start_5: -882872659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

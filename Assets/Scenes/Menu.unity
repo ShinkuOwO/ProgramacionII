@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 864462322}
   - component: {fileID: 864462324}
   - component: {fileID: 864462323}
+  - component: {fileID: 864462325}
   m_Layer: 5
   m_Name: Press Start
   m_TagString: Untagged
@@ -150,14 +151,14 @@ RectTransform:
   m_GameObject: {fileID: 864462321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.43755, y: 0.43755, z: 0.43755}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1298237148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -435.21}
+  m_AnchoredPosition: {x: 0, y: -361}
   m_SizeDelta: {x: 1920, y: 209.5741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864462323
@@ -198,6 +199,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864462321}
   m_CullTransparentMesh: 1
+--- !u!95 &864462325
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864462321}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: acdfb0589269f8a479a78f0a693942d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1166329668
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +390,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1166329669}
-  - {fileID: 864462322}
   - {fileID: 1848069409}
+  - {fileID: 864462322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -548,6 +570,7 @@ GameObject:
   - component: {fileID: 1848069409}
   - component: {fileID: 1848069411}
   - component: {fileID: 1848069410}
+  - component: {fileID: 1848069412}
   m_Layer: 5
   m_Name: Jojo
   m_TagString: Untagged
@@ -571,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 855.75}
+  m_AnchoredPosition: {x: -1553, y: 271}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848069410
@@ -612,6 +635,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848069408}
   m_CullTransparentMesh: 1
+--- !u!111 &1848069412
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848069408}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b6a26ae1a3a91c249aef057feb212247, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b6a26ae1a3a91c249aef057feb212247, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
