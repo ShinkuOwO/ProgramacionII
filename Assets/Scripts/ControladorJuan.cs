@@ -35,7 +35,7 @@ public class ControladorJuan : MonoBehaviour
     public float EjeZCamara;
 
     private float Horizontal;
-
+    private int estado;
     private Vector3 puntoInicio;
 
     private void Awake()
@@ -57,8 +57,7 @@ public class ControladorJuan : MonoBehaviour
     private void Update()
     {
         ManejarEntrada();     
-        ManejarSalto();
-        ManejarAnimacion();
+        ManejarSalto();      
         ManejarSonidos();
     }
 
@@ -70,8 +69,17 @@ public class ControladorJuan : MonoBehaviour
 
     private void ManejarEntrada()
     {
+        if (vida <= 0)
+        {
+            estado = 4;
+            Destroy(gameObject,5f);
+        }
+        animacion.SetInteger("Estado", estado);
         Horizontal = Input.GetAxis("Horizontal");
-        animacion.SetBool("corriendo", Mathf.Abs(Horizontal) > 0.0f);
+        if (Horizontal != 0) {
+            estado = 1;
+        }
+        else if (Horizontal == 0) {  estado = 0; }
         EnSuelo = Physics2D.Raycast(transform.position, Vector2.down, distanciaRayo);
     }
 
@@ -85,16 +93,12 @@ public class ControladorJuan : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X) && EnSuelo)
         {
+            estado = 2;
             rb2d.AddForce(Vector2.up * FuerzaSalto);
             fuenteAudioCaminar.PlayOneShot(sonidoSalto);
         }
     }
 
-    private void ManejarAnimacion()
-    {
-        bool saltando = !EnSuelo;
-        animacion.SetBool("saltando", saltando);
-    }
 
     private void ManejarSonidos()
     {
@@ -192,6 +196,14 @@ public class ControladorJuan : MonoBehaviour
                 vida = 200;
                 Destroy(collision.gameObject);
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BalaE"))
+        {
+            vida -= 100;
+            
         }
     }
 }

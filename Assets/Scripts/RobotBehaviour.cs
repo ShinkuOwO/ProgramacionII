@@ -21,9 +21,12 @@ public class RobotBehaviour : MonoBehaviour
     }
     void Update()
     {
+        if (Player != null) {
+
+            MirarAlPlayer();
+            DisparoEnemigo();
+        }
         
-        MirarAlPlayer();
-        DisparoEnemigo();
     }
     private void DisparoEnemigo()
     {
@@ -39,10 +42,14 @@ public class RobotBehaviour : MonoBehaviour
     }
     private void MirarAlPlayer()
     {
-        Vector3 direccion = Player.transform.position - transform.position;
-        if (direccion.x >= 0.0f) { transform.localScale = new Vector3(6.0f, 6.0f, 1.0f); volteado = false; }//mirando a la derecha osea default.
-        else { transform.localScale = new Vector3(-6.0f, 6.0f, 1.0f); volteado = true; }// de lo contrario mirando a la izquierda.
-    }
+        if(Player != null) 
+        {
+            Vector3 direccion = Player.transform.position - transform.position;
+            if (direccion.x >= 0.0f) { transform.localScale = new Vector3(6.0f, 6.0f, 1.0f); volteado = false; }//mirando a la derecha osea default.
+            else { transform.localScale = new Vector3(-6.0f, 6.0f, 1.0f); volteado = true; }// de lo contrario mirando a la izquierda.
+        }
+
+        }
     public bool GetVolteado()
     {
         return volteado;
