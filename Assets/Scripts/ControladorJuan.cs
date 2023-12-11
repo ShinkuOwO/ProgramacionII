@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
+using TMPro;
+using UnityEngine.UI;
 
 public class ControladorJuan : MonoBehaviour
 {
-    private int vida = 200;
+    private int vida ;
+    private int vidamaxima = 200;
+    public Slider Barravidajuan;
     [Header("Movimiento")]
     [Range(1, 10)] public float velocidad;
     [Range(-10, 10)] public float distanciaRayo;
@@ -46,7 +50,8 @@ public class ControladorJuan : MonoBehaviour
         fuenteAudioCaminar.loop = false;
         fuenteAudioCaminar.playOnAwake = false;
         ultimaPosicionPaso = transform.position;
-
+        vida = vidamaxima;
+        Barravidajuan.maxValue = vida;
         camaraPrincipal = Camera.main;
 
         longitudSonidosPasos = sonidosPasos.Length;
@@ -56,14 +61,18 @@ public class ControladorJuan : MonoBehaviour
 
     private void Update()
     {
-        ManejarEntrada();     
-        ManejarSalto();      
+        Barravidajuan.value = vida;      
+        ManejarEntrada();
+        ManejarSalto();             
         ManejarSonidos();
     }
 
     private void FixedUpdate()
     {
-        ManejarMovimiento();
+        if(vida > 0)
+        {
+            ManejarMovimiento();
+        }        
         ManejarCamara();
     }
 
@@ -202,7 +211,7 @@ public class ControladorJuan : MonoBehaviour
     {
         if (collision.CompareTag("BalaE"))
         {
-            vida -= 100;
+            vida -= 10;
             
         }
     }
