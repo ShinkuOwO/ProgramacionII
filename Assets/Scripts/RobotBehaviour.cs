@@ -12,17 +12,23 @@ public class RobotBehaviour : MonoBehaviour
     public float delayDisparo;
     int vida = 100;
     private enemyShoot eS;
-
+    private SpawnGrunt spawnGrunt;
+    int gruntsExistentes;
+    int limitegrunts;
     [Header("Volteado")]
     private bool volteado;
     private void Start()
     {
+        Player = GameObject.FindWithTag("Player");
         eS = FindObjectOfType<enemyShoot>();
+        spawnGrunt = FindObjectOfType<SpawnGrunt>();
     }
     void Update()
     {
         if (Player != null) {
 
+            gruntsExistentes = spawnGrunt.GetGruntsExistentes();
+            limitegrunts = spawnGrunt.GetlimiteGrunts();
             MirarAlPlayer();
             DisparoEnemigo();
         }
@@ -31,14 +37,29 @@ public class RobotBehaviour : MonoBehaviour
     private void DisparoEnemigo()
     {
         float distancia = Mathf.Abs(Player.transform.position.x - transform.position.x);
-        if (distancia < 10.0f && Time.time > ultimoDisparo + delayDisparo)
-        {
-            if (eS != null) 
+                   
+            if (distancia < 8f && Time.time > ultimoDisparo + delayDisparo)
             {
-                StartCoroutine(eS.DispararConIntervalo(volteado));
-                ultimoDisparo = Time.time;
+                if (spawnGrunt != null && gruntsExistentes < limitegrunts)
+                {
+                    StartCoroutine(eS.DispararConIntervalo(volteado));
+                    ultimoDisparo = Time.time;
+                }
             }
+        if (distancia > 6f && distancia < 15.0f)
+        {
+            Vector2 direccionNueva = (Player.transform.position - transform.position).normalized;
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(direccionNueva.x * 5f,rb.velocity.y);
         }
+        else
+        {
+            
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero; 
+        }
+
+
     }
     private void MirarAlPlayer()
     {
@@ -63,6 +84,10 @@ public class RobotBehaviour : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(Manzanita, transform.position, quaternion.identity);
+                if (spawnGrunt != null)
+                {
+                    spawnGrunt.ReduceGruntCount();
+                }
             }
         }
     }
